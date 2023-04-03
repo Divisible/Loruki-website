@@ -9,6 +9,8 @@
   --dark: #002240;
   --white: #fff;
   --light: #f4f4f4;
+  --success: #5cb85c;
+  --error: #d9534f;
 }
 
 /* Main settings */
@@ -83,6 +85,7 @@ img {width: 100%}
   color: var(--white);
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn-outline {
@@ -169,6 +172,10 @@ img {width: 100%}
   color: var(--primary);
 }
 
+.text-primary {
+  color: var(--secondary);
+}
+
 .lead {font-size: 20px;}
 
 .sm {font-size: 1rem;}
@@ -178,6 +185,30 @@ img {width: 100%}
 .lg {font-size: 3rem;}
 
 .xl {font-size: 4rem;}
+
+.alert {
+  background-color: var(--light);
+  padding: 10px 20px;
+  font-weight: bold;
+  margin: 15px 0;
+}
+
+.alert-success {
+  background-color: var(--success);
+  color: var(--white);
+}
+
+.alert-error {
+  background-color: var(--error);
+  color: var(--white);
+}
+
+code, pre {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px;
+}
+
 
 /* Navbar */
 .navbar {
@@ -254,8 +285,19 @@ img {width: 100%}
   -ms-transform: skewY(-2deg);
 }
 
+.showcase-text {
+  animation: SlideInFromLeft 1s ease-in;
+}
+
+.showcase-form {
+  animation: SlideInFromRight 1s ease-in;
+}
+
 /* Stats */
-.stats {padding: 100px;}
+.stats {
+  padding: 100px;
+  animation: SlideInFromBot 1s ease-in;
+}
 
 .stats-heading {
   max-width: 500px;
@@ -304,14 +346,173 @@ img {width: 100%}
   cursor: pointer;
 }
 
+/* Features */
+.features-head img,
+.docs-head img {
+  width: 200px;
+  justify-self: flex-end;
+}
+
+.features-sub-head img {
+  width: 300px;
+  justify-self: flex-end;
+}
+
+.features-main .card > i {margin: 0 10px;}
+
+.features-main .grid {padding: 30px;}
+
+.features-main .grid > *:first-child {grid-column: 1 / span 3;}
+
+.features-main .grid > *:nth-child(2) {grid-column: 1 / span 2;}
+
+/* Docs */
+.docs-main h3 {
+  margin: 20px 0;
+}
+
+.docs-main .grid {
+  grid-template-columns: 1fr 2fr;
+  align-items: flex-start;
+}
+
+.docs-main nav li {
+  font-size: 17px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px #ccc solid;
+}
+
+.docs-head a:hover {
+  font-weight: bold; 
+}
+
+.alert i {margin-right: 10px;}
+
 /* Footer */
+.footer .container {min-height: 120px;}
+
 .footer p {margin: 0;}
 
-.footer .social a {
-  margin: 0 10px;
-}
+.footer .social a {margin: 0 10px;}
 
 .footer .social {
   display: flex;
   justify-content: space-between;
+}
+
+/* Animation */
+@keyframes SlideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes SlideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes SlideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes SlideInFromBot {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Tablets and under */
+@media(max-width: 768px) {
+  .grid,
+  .showcase .grid,
+  .stats .grid,
+  .cli .grid,
+  .cloud .grid,
+  .features-main .grid,
+  .docs-main .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .showcase {height: auto;}
+
+  .showcase-text {
+    text-align: center;
+    margin-top: 40px;
+    animation: SlideInFromTop 1s ease-in;
+  }
+
+  .showcase-form {
+    justify-self: center;
+    margin: auto;
+    animation: SlideInFromBot 1s ease-in;
+  }
+
+  .stats {padding-bottom: 0;}
+
+  .cli .grid > *:first-child {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .features-head,
+  .features-sub-head,
+  .docs-head {
+    text-align: center;
+  }
+
+  .features-head img,
+  .features-sub-head img,
+  .docs-head img {
+    justify-self: center;
+  }
+
+  .features-main .grid > *:first-child,
+  .features-main .grid > *:nth-child(2) {
+    grid-column: 1;
+  }
+
+  .footer .container {text-align: center;}
+
+  .footer ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .footer ul li {border-bottom: 1px #fff dotted;}
+
+  .footer ul li:last-child {border-bottom: none;}
+}
+
+/* Mobile */
+@media(max-width: 500px) {
+  .navbar {height: 110px;}
+
+  .navbar .flex {flex-direction: column;}
+
+  .navbar ul {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }
