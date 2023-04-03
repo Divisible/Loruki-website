@@ -209,6 +209,10 @@ code, pre {
   padding: 10px;
 }
 
+.hidden {
+  visibility: none;
+  height: 0;
+}
 
 /* Navbar */
 .navbar {
